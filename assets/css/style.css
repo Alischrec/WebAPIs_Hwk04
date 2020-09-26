@@ -1,0 +1,17 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar{
+    width: 100%;
+}
+
+#right{
+    text-align: right;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
