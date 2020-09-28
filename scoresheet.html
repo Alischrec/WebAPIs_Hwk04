@@ -6,24 +6,29 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Document</title>
     <link rel='stylesheet' href='assets/css/style.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class='navbar'>
-        <div id='score'>
-            <h3>View Highscores!</h3>
-        </div>
+    <nav class='navbar navbar-light bg-light' style='display:flex; justify-content:space-between; '>
+        <a class='navbar-brand' href='scoresheet.html'>View Highscores!</a>
         <div id='right'>
-            <h3 id='time'> Time: </h3>
+            <h5 id='time'> Time: </h5>
         </div>
-    </div>
+    </nav>
 
-    <!-- <div class='container'>
-        <div class='row'>
-            <h1 class='header'> High Scores! </h1>
-        </div>
+    <main id='start-screen' class='container'>
+        <section class='row'>
+            <div class='col-md-10'>
+                <article class='block'>
+                    <h1 class='header'> High Scores! </h1>
+                </article>
+            </div>
+        </section>
+    </main>
 
-    </div> -->
+    
 
     <script src='script.js'></script>
 </body>

@@ -1,17 +1,76 @@
+/* Typography */
 body{
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url(https://i.pinimg.com/originals/80/3f/d7/803fd771eb9bdb1ce255aa655b2a3ec7.jpg);
+    background-size: 100%;
 }
 
+/* Navbar */
 .navbar{
-    width: 100%;
+    background-image: url(https://image.shutterstock.com/image-illustration/gradient-ombre-color-blend-abstract-260nw-1440883430.jpg);
+    opacity: .7;
+    background-size: 100%;
 }
 
-#right{
-    text-align: right;
-}
-
+/* Centering app */
 .container {
     width: 800px;
     margin: 0 auto;
     text-align: center;
   }
+
+.block{
+    padding: 150px;
+    margin-bottom: 30px;
+
+}
+
+/* Start Screen: */
+.description{
+    margin-top: 20px;
+}
+
+#start{
+    background-color: #894FBF;
+    color: #eee;
+    margin-top: 10px;
+}
+
+/* START QUESTION SCREEN: */
+#question-screen{
+    /* Hiding Screen */
+      display: none;
+      text-align: center;
+  }
+  
+  #question-prompt{
+      text-align: justify;
+  }
+  
+  #question-answers{
+      text-align: justify;
+      margin-top: 50px;
+  }
+
+  .answers{
+      /* answer button color */
+      background-color: #894FBF;
+      border-color: #894FBF;
+      color: #eee;  
+      /* answer button placement */
+      margin-bottom: 8px;
+      border-radius: 5px;
+  }
+/* END QUESTION SCREEN */
+
+
+
+#end-screen{
+    /* Hiding screen */
+    display: none;
+}
+
+#initials{
+    margin-top: 20px;
+}
+

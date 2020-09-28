@@ -21,9 +21,10 @@ View the [Github-pages](https://alischrec.github.io/WebAPIs_Hwk04/)
 * [Acknowledgements](#acknowledgements)
 
 ## About the Project:
-<!-- The focus of this project was to utilize the [Bootstrap Framework](https://getbootstrap.com/) as a base to create a functional, deployed application. The project was to create a working portfolio using Bootstap's grid system while incorporating personal information and images for viewing pleasure. 
+The focus of this project was to utilize 'vanilla' JavaScript to create an online quiz. The project focused on 
 
-![Project Gif](assets/images/gif.gif) -->
+
+<!-- ![Project Gif](assets/images/gif.gif) --> -->
 
 <!-- ### HTML:
 * [index.html](https://github.com/Alischrec/PasswordGenerator_Hwk03/blob/master/index.html)
@@ -33,9 +34,9 @@ View the [Github-pages](https://alischrec.github.io/WebAPIs_Hwk04/)
 
 ### JAVASCRIPT:
 * [script.js](https://github.com/Alischrec/PasswordGenerator_Hwk03/blob/master/script.js) -->
-<!-- 
+
 ### Built With:
-* This app was not built with any frameworks.  -->
+This app was built upon [Bootstrap Framework](https://www.getbootstrap.com)
 
 ## Getting Started:
 To get a local copy up and running follow the steps below.
@@ -46,7 +47,7 @@ None.
 ### Installation:
 1. Clone the Repository:
 ```sh
-git clone git@github.com:Alischrec/WebAPIs_Hwk04.git -->
+git clone git@github.com:Alischrec/WebAPIs_Hwk04.git
 ```
 
 ## Roadmap:
@@ -93,3 +94,5 @@ Project Link: [https://github.com/Alischrec/WebAPIs_Hwk04](https://github.com/Al
 
 ## Acknowledgements: 
 * University of Washington Coding Bootcamp for providing me with the skills and knowledge to create this project. 
+
+* Thank you to [w3schools.com](https://www.w3schools.com) for quiz questions!
