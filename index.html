@@ -11,26 +11,28 @@
 </head>
 
 <body>
-
+<!-- Nav. Bar: -->
     <nav class='navbar navbar-light bg-light' style='display:flex; justify-content:space-between; '>
         <a class='navbar-brand' href='scoresheet.html'>View Highscores!</a>
         <h5 id='time'> Time: </h5>
     </nav>
 
-
+<!-- Start Screen: -->
     <main id='start-screen' class='container'>
         <section class='row'>
             <div class='col-md-10'>
                 <article class='block'>
-                <h1 class='header'> Coding Quiz Challenge! </h1>
-                <h5 class='description'> Try to answer the following code-related questions within the alotted time. Keep
-                    in mind that incorrect answers will penalize your score/time by 10 seconds. </h5>
-                <button type="button" class="btn btn-secondary" id='start'>Start Quiz! </button>
-            </article>
+                    <h1 class='header'> Coding Quiz Challenge! </h1>
+                    <h5 class='description'> Try to answer the following code-related questions within the alotted time.
+                        Keep
+                        in mind that incorrect answers will penalize your score/time by 10 seconds. </h5>
+                    <button type="button" class="btn btn-secondary" id='start'> Start Quiz! </button>
+                </article>
             </div>
         </section>
     </main>
 
+    <!-- Question Screen: -->
     <main id='question-screen' class='container'>
         <section class='row'>
             <div class='col-md-10'>
@@ -38,22 +40,29 @@
                     <h1 id='question-prompt'></h1>
                     <div id='question-answers'></div>
                     <div id='comment'></div>
-            </article>
+                </article>
             </div>
         </section>
     </main>
 
+    <!-- End Screen: (where user enters their initials for high score) -->
     <main id='end-screen' class='container'>
         <section class='row'>
             <div class='col-md-10'>
                 <article class='block'>
+                    <h1 class='header'> Congratulations! <br> You finished the quiz!</h1>
+                    <p class='description'> Log your high score below!
+                        <br> Think you can do better? 
+                        <a href=index.html> Try Again! </a>
+                    </p>
                     <input type='text' placeholder='Type your initials here' id='initials'>
                     <button id='submit'>Submit</button>
-            </article>
+                </article>
             </div>
         </section>
     </main>
 
+    <!-- Javascript Tag -->
     <script src='script.js'></script>
 
 </body>

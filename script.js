@@ -23,6 +23,8 @@ let startScreen = document.getElementById('start-screen');
 let questionScreen = document.getElementById('question-screen');
 let endScreen = document.getElementById('end-screen');
 let commentEl = document.getElementById('comment');
+let submitEl = document.getElementById('submit');
+let initialsEl = document.getElementById('initials');
 
 let secondsLeft = 76;
 
@@ -34,9 +36,9 @@ let timer = () => {
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      // startScreen.style.display = 'none';
-      // endScreen.style.display = 'block';
-      // questionScreen.style.display = 'none';
+      startScreen.style.display = 'none';
+      endScreen.style.display = 'block';
+      questionScreen.style.display = 'none';
     }
 
   }, 1000);
@@ -105,18 +107,27 @@ const questions = [
 ]
 
 function showQuestion(questionIndex) {
+  
+  // Once quiz has ended, go to end screen
+  const endQuiz = questions.length - questionIndex;
+  if (endQuiz === 0) {
+    startScreen.style.display = 'none';
+    endScreen.style.display = 'block';
+    questionScreen.style.display = 'none';
+  }
+  
   // Retrieve the current question:
   const currentQuestion = questions[questionIndex];
-
+  
   // Placing the current question's prompt into the question prompt div:
   questionPromptEl.innerText = currentQuestion.prompt;
   questionAnswersEl.innerHTML = '';
 
-  for (const answer of currentQuestion.answers) {
+  for (const answer of currentQuestion.answers) { 
     const newButtonContainer = document.createElement('div');
     const newButtonEl = document.createElement('button');
     newButtonEl.className = 'answers';
-
+    
     // Check for correct/incorrect answers:
     newButtonEl.addEventListener('click', () => {
       if (answer === currentQuestion.correctAnswer) {
@@ -128,46 +139,46 @@ function showQuestion(questionIndex) {
         showQuestion(questionIndex + 1);
         secondsLeft -= 10;
       }
-
     })
-    
-    //   console.log('current question ', questionIndex);
-    //  console.log('is test finished? ', questionIndex === questions.length -1);
-    //  console.log('remaining questions ', questions.length - questionIndex);
     
     newButtonEl.innerText = answer;
     newButtonContainer.append(newButtonEl);
     questionAnswersEl.append(newButtonContainer);
-    
-    const endQuiz = questions.length - (questionIndex +1);
-
-      if (endQuiz === 0 ) {
-        startScreen.style.display = 'none';
-        endScreen.style.display = 'block';
-        questionScreen.style.display = 'none';
-      }
   }
 }
-
 showQuestion(0);
 
-// let quizEnd = () => {
-//   startScreen.style.display = 'none';
-//   endScreen.style.display = 'block';
-//   questionScreen.style.display = 'none';
-// }
+
+submitEl.addEventListener('click', function (event) {
+  event.preventDefault(); 
+  
+  if (initialsEl.value.length < 1)
+  return;
+  else {
+    window.location.assign('scoresheet.html');}
+    
+    // Store initials & score within Local Storage
+    localStorage.setItem(initialsEl.value, secondsLeft);
+    initialsEl.value ='';
+    submitEl.disable = true;
+    
+  })
+  
+  // renderHighScores(); 
+  
+  // function renderHighScores() {
+  //   var initials = localStorage.getItem(initialsEl.value);
+  //   var highscore = localStorage.getItem(secondsLeft);
+  
+  //   if (!initials || !highscore) {
+  //     return;
+  //   }      
 
 
-// Set leftover time to be the user's score, not pointing the questions
-
-
-    // function goToHighScores() {
-      //   window.location.assign('scoresheet.html');
-      // }
-
-// Audio Elements:
- // var audioTada = document.createElement('<audio>');
- // audioElement.setAttribute('scr', 'assets/Ta_Da.mp3');
-
- // var audioWomp = document.createElement('<audio>');
-// audioElement.setAttribute('scr', 'assets/Sad_Trombone.mp3');
+      // Audio Elements:
+      // var audioTada = document.createElement('<audio>');
+      // audioElement.setAttribute('scr', 'assets/Ta_Da.mp3');
+      
+      // var audioWomp = document.createElement('<audio>');
+      // audioElement.setAttribute('scr', 'assets/Sad_Trombone.mp3');
+      
