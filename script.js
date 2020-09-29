@@ -22,6 +22,7 @@ let questionAnswersEl = document.getElementById('question-answers');
 let startScreen = document.getElementById('start-screen');
 let questionScreen = document.getElementById('question-screen');
 let endScreen = document.getElementById('end-screen');
+let commentEl = document.getElementById('comment');
 
 let secondsLeft = 76;
 
@@ -33,7 +34,9 @@ let timer = () => {
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      sendMessage();
+      // startScreen.style.display = 'none';
+      // endScreen.style.display = 'block';
+      // questionScreen.style.display = 'none';
     }
 
   }, 1000);
@@ -60,7 +63,7 @@ const questions = [
     correctAnswer: 'D. All of the Above',
   },
   {
-    prompt: 'Where is the correct place to insert a JavaScript?',
+    prompt: 'Where is the correct place to insert your JavaScript <script> tag?',
     answers: [
       'A. The <head> section',
       'B. The <body> section',
@@ -117,45 +120,54 @@ function showQuestion(questionIndex) {
     // Check for correct/incorrect answers:
     newButtonEl.addEventListener('click', () => {
       if (answer === currentQuestion.correctAnswer) {
-        alert('correct!');
+        commentEl.textContent = 'Correct!';
         showQuestion(questionIndex + 1);
-        // add point to high score
-        
       }
       else {
-        alert('wrong!');
+        commentEl.textContent = 'Incorrect!';
         showQuestion(questionIndex + 1);
         secondsLeft -= 10;
       }
-    })
 
+    })
+    
+    //   console.log('current question ', questionIndex);
+    //  console.log('is test finished? ', questionIndex === questions.length -1);
+    //  console.log('remaining questions ', questions.length - questionIndex);
+    
     newButtonEl.innerText = answer;
     newButtonContainer.append(newButtonEl);
     questionAnswersEl.append(newButtonContainer);
+    
+    const endQuiz = questions.length - (questionIndex +1);
+
+      if (endQuiz === 0 ) {
+        startScreen.style.display = 'none';
+        endScreen.style.display = 'block';
+        questionScreen.style.display = 'none';
+      }
   }
 }
 
 showQuestion(0);
 
-
-
-
-// let quizEnd = (time = 0) => {
+// let quizEnd = () => {
 //   startScreen.style.display = 'none';
 //   endScreen.style.display = 'block';
 //   questionScreen.style.display = 'none';
 // }
 
 
+// Set leftover time to be the user's score, not pointing the questions
 
 
     // function goToHighScores() {
       //   window.location.assign('scoresheet.html');
       // }
 
-      // Audio Elements:
-      // var audioTada = document.createElement('audio');
-      // audioElement.setAttribute('scr', 'assets/Ta_Da.mp3');
+// Audio Elements:
+ // var audioTada = document.createElement('<audio>');
+ // audioElement.setAttribute('scr', 'assets/Ta_Da.mp3');
 
-      // var audioWomp = document.createElement('audio');
-      // audioElement.setAttribute('scr', 'assets/Sad_Trombone.mp3');
+ // var audioWomp = document.createElement('<audio>');
+// audioElement.setAttribute('scr', 'assets/Sad_Trombone.mp3');

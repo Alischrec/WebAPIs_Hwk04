@@ -14,7 +14,7 @@ body{
 
 /* Centering app */
 .container {
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
   }
@@ -53,13 +53,13 @@ body{
   }
 
   .answers{
-      /* answer button color */
+      /* answer button color/style */
       background-color: #894FBF;
       border-color: #894FBF;
       color: #eee;  
+      border-radius: 5px;
       /* answer button placement */
       margin-bottom: 8px;
-      border-radius: 5px;
   }
 /* END QUESTION SCREEN */
 
@@ -71,6 +71,15 @@ body{
 }
 
 #initials{
+    border-radius: 5px;
     margin-top: 20px;
 }
 
+#submit{
+    /* submit button color/style */
+    background-color: #894FBF;
+    border-color: #894FBF;
+    color: #eee;
+    border-radius: 5px;
+   
+}
