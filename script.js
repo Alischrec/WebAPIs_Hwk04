@@ -178,22 +178,33 @@ submitEl.addEventListener('click', function (event) {
   }
 
   createHighScores();
+  
 })
 }
+
 
 let createHighScores = () => {
   var allScores = JSON.parse(localStorage.getItem('score'));
   let keyEl = document.getElementById('key');
-  console.log(keyEl);
+ 
+  allScores.sort (function (a, b) {
+        if ( a.score > b.score ){
+          return -1;
+        }
+        if ( a.score < b.score ){
+          return 1;
+        }
+        return 0;
+      })
 
   if (keyEl && allScores) {
     for (let i = 0; i < allScores.length; i++) {
       const element = allScores[i];
-      console.log(element);
 
       let listEl = document.createElement('li');
       listEl.textContent = element.initials + ' : ' + element.score;
       keyEl.appendChild(listEl);
+
     }
   }
 }
