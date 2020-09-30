@@ -15,43 +15,6 @@
 //        - Store their initials alongside their score in localStorage (keep high scores in an array, where each user score is an object, with 'inititals' field and a 'score field')
 //        - Redirect to highscore screen
 
-let timeEl = document.getElementById('time');
-let startEl = document.getElementById('start');
-let questionPromptEl = document.getElementById('question-prompt');
-let questionAnswersEl = document.getElementById('question-answers');
-let startScreen = document.getElementById('start-screen');
-let questionScreen = document.getElementById('question-screen');
-let endScreen = document.getElementById('end-screen');
-let commentEl = document.getElementById('comment');
-let submitEl = document.getElementById('submit');
-let initialsEl = document.getElementById('initials');
-
-let secondsLeft = 76;
-
-// Quiz Timer:
-let timer = () => {
-  var timerInterval = setInterval(() => {
-    secondsLeft--;
-    timeEl.textContent = 'Time: ' + secondsLeft;
-
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      startScreen.style.display = 'none';
-      endScreen.style.display = 'block';
-      questionScreen.style.display = 'none';
-    }
-
-  }, 1000);
-}
-
-// Timer begins when Start Button is clicked
-startEl.addEventListener('click', (event) => {
-  timer();
-  startScreen.style.display = 'none';
-  endScreen.style.display = 'none';
-  questionScreen.style.display = 'block';
-});
-
 // Quiz Questions:
 const questions = [
   {
@@ -106,30 +69,73 @@ const questions = [
   },
 ]
 
+// Retrieving elements from html
+let timeEl = document.getElementById('time');
+let startEl = document.getElementById('start');
+let questionPromptEl = document.getElementById('question-prompt');
+let questionAnswersEl = document.getElementById('question-answers');
+let startScreen = document.getElementById('start-screen');
+let questionScreen = document.getElementById('question-screen');
+let endScreen = document.getElementById('end-screen');
+let commentEl = document.getElementById('comment');
+let submitEl = document.getElementById('submit');
+let initialsEl = document.getElementById('initials');
+let clearBtn = document.getElementById('clear');
+
+let secondsLeft = 76;
+
+// Quiz Timer:
+let timer = () => {
+  var timerInterval = setInterval(() => {
+    secondsLeft--;
+    timeEl.textContent = 'Time: ' + secondsLeft;
+
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      startScreen.style.display = 'none';
+      endScreen.style.display = 'block';
+      questionScreen.style.display = 'none';
+    }
+
+  }, 1000);
+}
+
+// Timer begins when Start Button is clicked
+if (startEl) {
+  startEl.addEventListener('click', (event) => {
+    timer();
+    startScreen.style.display = 'none';
+    endScreen.style.display = 'none';
+    questionScreen.style.display = 'block';
+  });
+}
+
 function showQuestion(questionIndex) {
-  
+
   // Once quiz has ended, go to end screen
   const endQuiz = questions.length - questionIndex;
   if (endQuiz === 0) {
     startScreen.style.display = 'none';
     endScreen.style.display = 'block';
     questionScreen.style.display = 'none';
+    return;
   }
-  
+
   // Retrieve the current question:
   const currentQuestion = questions[questionIndex];
-  
+
   // Placing the current question's prompt into the question prompt div:
   questionPromptEl.innerText = currentQuestion.prompt;
   questionAnswersEl.innerHTML = '';
 
-  for (const answer of currentQuestion.answers) { 
+  for (const answer of currentQuestion.answers) {
     const newButtonContainer = document.createElement('div');
     const newButtonEl = document.createElement('button');
     newButtonEl.className = 'answers';
-    
+
     // Check for correct/incorrect answers:
     newButtonEl.addEventListener('click', () => {
+
       if (answer === currentQuestion.correctAnswer) {
         commentEl.textContent = 'Correct!';
         showQuestion(questionIndex + 1);
@@ -140,45 +146,70 @@ function showQuestion(questionIndex) {
         secondsLeft -= 10;
       }
     })
-    
+
     newButtonEl.innerText = answer;
     newButtonContainer.append(newButtonEl);
     questionAnswersEl.append(newButtonContainer);
   }
 }
+if (startEl){
 showQuestion(0);
+}
 
-
+if (submitEl){
 submitEl.addEventListener('click', function (event) {
-  event.preventDefault(); 
-  
-  if (initialsEl.value.length < 1)
-  return;
-  else {
-    window.location.assign('scoresheet.html');}
-    
-    // Store initials & score within Local Storage
-    localStorage.setItem(initialsEl.value, secondsLeft);
-    initialsEl.value ='';
-    submitEl.disable = true;
-    
-  })
-  
-  // renderHighScores(); 
-  
-  // function renderHighScores() {
-  //   var initials = localStorage.getItem(initialsEl.value);
-  //   var highscore = localStorage.getItem(secondsLeft);
-  
-  //   if (!initials || !highscore) {
-  //     return;
-  //   }      
+  event.preventDefault();
 
+  var newPlayer = {
+    initials: initialsEl.value,
+    score: secondsLeft
+  }
+
+  var playersScore = JSON.parse(localStorage.getItem('score')) || []
+  playersScore.push(newPlayer)
+  
+  // Store initials & score within Local Storage
+  localStorage.setItem('score', JSON.stringify(playersScore));
+
+  if (initialsEl.value.length < 1)
+    return;
+  else {
+    window.location.assign('scoresheet.html');
+  }
+
+  createHighScores();
+})
+}
+
+let createHighScores = () => {
+  var allScores = JSON.parse(localStorage.getItem('score'));
+  let keyEl = document.getElementById('key');
+  console.log(keyEl);
+
+  if (keyEl && allScores) {
+    for (let i = 0; i < allScores.length; i++) {
+      const element = allScores[i];
+      console.log(element);
+
+      let listEl = document.createElement('li');
+      listEl.textContent = element.initials + ' : ' + element.score;
+      keyEl.appendChild(listEl);
+    }
+  }
+}
+createHighScores();
+
+if (clearBtn){
+clearBtn.addEventListener('click', function (event) {
+  let keyEl = document.getElementById('key');
+  localStorage.clear();
+  keyEl.innerHTML = '';
+});
+}
 
       // Audio Elements:
       // var audioTada = document.createElement('<audio>');
       // audioElement.setAttribute('scr', 'assets/Ta_Da.mp3');
-      
+
       // var audioWomp = document.createElement('<audio>');
       // audioElement.setAttribute('scr', 'assets/Sad_Trombone.mp3');
-      

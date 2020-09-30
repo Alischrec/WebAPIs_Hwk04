@@ -21,19 +21,20 @@ View the [Github-pages](https://alischrec.github.io/WebAPIs_Hwk04/)
 * [Acknowledgements](#acknowledgements)
 
 ## About the Project:
-The focus of this project was to utilize 'vanilla' JavaScript to create an online quiz. The project focused on 
+The focus of this project was to utilize 'vanilla' JavaScript to create an online quiz, testing the user's knowledge of web development. The quiz should be timed, with the final time equalling the user's score. Final scores should be tracked within the localStorage and accessible to accessible to the user at any given time unless cleared. 
 
 
-<!-- ![Project Gif](assets/images/gif.gif) --> -->
+![Project Gif](assets/image/gif.gif) 
 
-<!-- ### HTML:
-* [index.html](https://github.com/Alischrec/PasswordGenerator_Hwk03/blob/master/index.html)
+### HTML:
+* [index.html](https://github.com/Alischrec/WebAPIs_Hwk04/blob/master/index.html)
+* [scoresheet.html](https://github.com/Alischrec/WebAPIs_Hwk04/blob/master/scoresheet.html)
 
 ### CSS:
-* [style.css](https://github.com/Alischrec/PasswordGenerator_Hwk03/blob/master/style.css)
+* [style.css](https://github.com/Alischrec/WebAPIs_Hwk04/blob/master/assets/css/style.css)
 
 ### JAVASCRIPT:
-* [script.js](https://github.com/Alischrec/PasswordGenerator_Hwk03/blob/master/script.js) -->
+* [script.js](https://github.com/Alischrec/WebAPIs_Hwk04/blob/master/script.js)
 
 ### Built With:
 This app was built upon [Bootstrap Framework](https://www.getbootstrap.com)

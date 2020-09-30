@@ -81,3 +81,18 @@ body{
     border-radius: 5px;
    
 }
+
+/* High scores design */
+#key{
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/* clear button */
+#clear{
+    background-color: #894FBF;
+    border-color: #894FBF;
+    color: #eee;
+    border-radius: 5px;
+}
